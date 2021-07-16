@@ -1,0 +1,51 @@
+#pageEvaluation form ::-webkit-input-placeholder {
+  /* Edge */
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#pageEvaluation form :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#pageEvaluation form ::-ms-input-placeholder {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#pageEvaluation form ::placeholder {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#pageEvaluation .card {
+  border: none;
+}
+
+#pageEvaluation .form-control {
+  padding: 10px 0;
+}
+
+#pageEvaluation .btn-box .btn {
+  padding: 10px 10px 10px 0;
+  font-size: 14px;
+}
+
+#pageEvaluation .btn-box .remove-btn {
+  color: red;
+}
+
+#pageEvaluation .card-body {
+  min-height: 37vw;
+}
+
+#pageEvaluation .card-body label {
+  margin: 0;
+}
+/*# sourceMappingURL=add-evaluation.css.map */

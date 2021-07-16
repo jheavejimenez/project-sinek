@@ -1,0 +1,46 @@
+//Evaluation
+{
+  "evaluationId": "Number",
+  "teamName": "Text",
+  "evaluationLink" : "Text",
+  "members": [{
+		"memberOne": "Text"
+	}]
+}
+
+//Member
+{
+  "memberId" : "Number",
+  "memberName": "Text",
+  "memberEmail": "Text",
+	"evaluationForm": [{
+		"evaluationId": "ID",
+		"answerId": "ID"
+	}]
+}
+
+//Answer
+{
+  "member_id": "Number",
+  "answered": "Boolean",
+  "question_one" : [
+    {
+      "rank": "Number",
+      "member_id": "Number",
+      "member_name": "Text",
+      "reason" : "Text"
+    },
+    {
+      "rank": "Number",
+      "member_id": "Number",
+      "member_name": "Text",
+      "reason" : "Text"
+    }
+  ],
+  "question_two" : {
+    "member_id" : "Number",
+    "member_name": "Text",
+    "reason" : "Text"
+  },
+  "question_three" : "String"
+}

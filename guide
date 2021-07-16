@@ -1,0 +1,15 @@
+// Install react
+npx create-react-app <app name>
+
+// For Backend directory
+mkdir backend
+cd backend
+
+
+// Install dependencies
+npm init -y -- TO STOP ASKING "YES"
+npm install express cors mongoose dotenv
+npm install -g nodemon
+
+// Install HELPER
+npm install axios

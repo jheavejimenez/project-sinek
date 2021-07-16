@@ -1,0 +1,50 @@
+#pageEvaluation {
+    form {
+        ::-webkit-input-placeholder {
+            /* Edge */
+            color: #ccc;
+            font-size:14px;
+            font-weight: 300;
+        }
+
+        :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #ccc;
+            font-size:14px;
+            font-weight: 300;
+        }
+
+        ::placeholder {
+            color: #ccc;
+            font-size:14px;
+            font-weight: 300;
+        }
+    }
+
+    .card {
+        border: none;
+    }
+
+    .form-control {
+        padding: 10px 0;
+    }
+
+    .btn-box {
+        .btn {
+            padding: 10px 10px 10px 0;
+            font-size: 14px;
+        }
+
+        .remove-btn {
+            color: red;
+        }
+    }
+
+    .card-body {
+        min-height: 37vw;
+
+        label {
+            margin: 0;
+        }
+    }
+}

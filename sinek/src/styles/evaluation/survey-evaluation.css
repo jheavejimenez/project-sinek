@@ -1,0 +1,9 @@
+#pageSurvey .input-group-text {
+  min-width: 150px;
+}
+
+#pageSurvey .form-floating {
+  color: #ccc;
+  font-weight: 300;
+}
+/*# sourceMappingURL=survey-evaluation.css.map */

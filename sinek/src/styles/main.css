@@ -1,0 +1,79 @@
+body {
+  font-family: "Poppins";
+}
+
+.full-window {
+  height: 100vh;
+}
+
+.gradient {
+  background-image: -webkit-gradient(linear, right top, left bottom, from(#255fea), to(#00ebc1));
+  background-image: linear-gradient(to bottom left, #255fea, #00ebc1);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blue {
+  background-color: #2055f1;
+  color: #ffffff;
+}
+
+.light-gray {
+  background-color: #f8f8f8;
+}
+
+.dark {
+  background-color: #403b31;
+  color: #ffffff;
+}
+
+.dark-reverse {
+  background-color: #ffffff;
+  color: #403b31;
+}
+
+button.dark:hover {
+  background-color: #625e56;
+  color: #ffffff;
+}
+
+.green {
+  background-color: #12c45e;
+  color: #ffffff;
+}
+
+button.green:hover {
+  background-color: #38d57b;
+  color: #ffffff;
+}
+
+.white {
+  background: #ffffff;
+}
+
+.pageTitle {
+  font-size: 1.5vw;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0 10px 10px 0px rgba(50, 50, 50, 0.15);
+  box-shadow: 0 10px 10px 0px rgba(50, 50, 50, 0.15);
+}
+
+.form-control {
+  border: 0;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+}
+
+.navi {
+  color: #403b31;
+}
+
+.navi.active {
+  color: #2055f1;
+  border-bottom: 3px solid #2055f1;
+}
+/*# sourceMappingURL=main.css.map */
