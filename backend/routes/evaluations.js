@@ -44,7 +44,7 @@ router.route('/').get(async (req, res) => {
 
 });
 
-router.put('/:id', async(req, res) => {
+router.route('/:id').put(async (req, res) => {
   try {
     const update = {
       title: req.body.title,

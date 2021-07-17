@@ -20,16 +20,15 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/:id').put(async (req, res) =>{
-    Member.findById(req.params.id)
-
-    .then(member => {
-        member.username = req.body.username;
-
-        member.save()
-        .then(() => res.json('Member updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
+    try {
+        const {memberName, memberEmail, evaluationForm} = req.body;
+        const update = {memberName, memberEmail, evaluationForm};
+        const members = await Members.findByIdAndUpdate(req.params.id, update, {new: true});
+        res.json(members);
+        
+    } catch (err) {
+        res.status(400).json('Error: ' + err);
+    }
 
 }).delete(async (req, res) => {
     try {
