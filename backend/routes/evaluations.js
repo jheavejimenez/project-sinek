@@ -49,6 +49,7 @@ router.route('/:id').put(async (req, res) => {
     const update = {
       title: req.body.title,
       members: req.body.members
+      
     }
 
     const evaluation = await Evaluation.findByIdAndUpdate(req.params.id, update, { new: true });
@@ -56,6 +57,7 @@ router.route('/:id').put(async (req, res) => {
 
   } catch(error) {
     res.status(400).json('Error: ' + err);
+
   }
 
 }).delete(async (req, res) => {
@@ -65,6 +67,7 @@ router.route('/:id').put(async (req, res) => {
 
   } catch (err) {
     res.status(400).json('Error: ' + err);
+
   }
 });
 

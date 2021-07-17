@@ -26,7 +26,7 @@ export async function deleteEvaluation(
     managementEmail,
     teamName,
     evaluationLink,
-    members,
+    members
 
   ) {
     const data = {managementEmail, teamName, evaluationLink, members,}
