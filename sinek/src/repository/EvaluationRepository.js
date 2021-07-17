@@ -5,7 +5,7 @@ export async function createEvaluation(
     managementEmail,
     teamName,
     evaluationLink,
-    members,
+    members
 
 ) {
     const data = {managementEmail, teamName, evaluationLink, members,}
