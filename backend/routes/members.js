@@ -28,6 +28,7 @@ router.route('/:id').put(async (req, res) =>{
         
     } catch (err) {
         res.status(400).json('Error: ' + err);
+        
     }
 
 }).delete(async (req, res) => {
@@ -37,6 +38,7 @@ router.route('/:id').put(async (req, res) =>{
 
     } catch(err) {
         res.status(400).json('Error: ' + err);
+
     }
 });
 
