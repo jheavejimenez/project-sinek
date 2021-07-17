@@ -1,16 +1,17 @@
-import { Router } from "express";
-import { Evaluation } from "../models/evaluation.model";
-import { Member } from "../models/members.model"
+const router = require('express').Router();
+
+let Evaluation = require('../models/evaluation.model');
+let Member = require('../models/members.model');
 
 
-Router.route('/').get((req, res) => {
+router.route('/').get((req, res) => {
     Evaluation.find()
     .then(evaluation => res.json(evaluation))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // ADD
-Router.route('/add').post(async (req, res) => {
+router.route('/add').post(async (req, res) => {
   try {
     const newEvaluation = new Evaluation({
       managementEmail: req.body.managementEmail,
@@ -63,21 +64,21 @@ Router.route('/add').post(async (req, res) => {
 });
 
 // READ Specific collection
-Router.route('/:id').get((req, res) => {
+router.route('/:id').get((req, res) => {
     Evaluation.findById(req.params.id)
     .then(evaluation => res.json(evaluation))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // DELETE
-Router.route('/:id').delete((req, res) => {
+router.route('/:id').delete((req, res) => {
     Evaluation.findByIdAndDelete(req.params.id)
     .then(() => res.json('Evaluation deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // UPDATE
-Router.put('/update/:id', async(req, res) => {
+router.put('/update/:id', async(req, res) => {
   try {
     const update = {
       title: req.body.title,
@@ -107,4 +108,4 @@ Router.put('/update/:id', async(req, res) => {
     // .catch(err => res.status(400).json('Error: ' + err));
 });
 
-module.exports = Router;
+module.exports = router;
