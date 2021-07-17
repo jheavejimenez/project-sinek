@@ -21,7 +21,6 @@ export async function deleteEvaluation(
     return await axios.delete(`${ApiConfig.url}/api/evaluations/${id}`);
   }
   
-  
   export async function updateEvaluation(
     id,
     managementEmail,
@@ -35,4 +34,3 @@ export async function deleteEvaluation(
   
     return await axios.put(`${ApiConfig.url}/api/evaluations/${id}`, data);
   }
-  
