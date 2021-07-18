@@ -71,4 +71,21 @@ router.route('/:id').put(async (req, res) => {
   }
 });
 
+// API for getting members in Evaluation
+router.route('/:id/members').get(async (req, res) => {
+
+  const evaluation = await Evaluation.findById(req.params.id);
+  const evalutationMembers = evaluation.members;
+  let memberList = [];
+
+  evalutationMembers.forEach(async member => {
+    memberList.push(member.memberId);
+  })
+
+  // List all members in evaluation
+  const records = await Member.find({ '_id': { $in: memberList } });
+
+  res.json(records);
+});
+
 module.exports = router;

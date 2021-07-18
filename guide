@@ -18,3 +18,9 @@ npm install axios
 
 // Setup
 Reacts Styled Elements
+
+// REACT Guides
+
+Getting ID from URL
+import { useParams } from "react-router-dom";
+const { id } = useParams();

@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route  path="/evaluation" component={Evaluation} />
           <Route  path="/evaluation-add" component={AddEvaluation} />
-          <Route  path="/evaluation-survey" component={SurveyEvaluation} />
+          <Route  path="/evaluation-survey/:id/:memberId" component={SurveyEvaluation} />
           <Route  path="/evaluation-summary" component={SummaryEvaluation} />
         </Switch>
       </div>

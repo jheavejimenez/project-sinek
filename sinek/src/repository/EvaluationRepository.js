@@ -11,14 +11,14 @@ export async function createEvaluation(
     const data = {managementEmail, teamName, evaluationLink, members,}
     console.log(data);
 
-    return await axios.post(`${ApiConfig.url}/api/evaluations`, data);
+    return await axios.post(`${ApiConfig.url}/api/evaluation`, data);
 }
 
 export async function deleteEvaluation(
     id,
 
   ) {
-    return await axios.delete(`${ApiConfig.url}/api/evaluations/${id}`);
+    return await axios.delete(`${ApiConfig.url}/api/evaluation/${id}`);
   }
   
   export async function updateEvaluation(
@@ -32,5 +32,12 @@ export async function deleteEvaluation(
     const data = {managementEmail, teamName, evaluationLink, members,}
     console.log(data);
   
-    return await axios.put(`${ApiConfig.url}/api/evaluations/${id}`, data);
+    return await axios.put(`${ApiConfig.url}/api/evaluation/${id}`, data);
   }
+
+export async function evaluationMember(
+  id,
+) {
+
+  return await axios.get(`${ApiConfig.url}/api/evaluation/${id}/members`);
+}

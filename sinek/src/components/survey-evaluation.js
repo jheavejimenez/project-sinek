@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from "react";
-// import EvaluationDataService from "../services/evaluation";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { evaluationMember } from "../repository/EvaluationRepository";
 import "../styles/evaluation/survey-evaluation.css";
 import "../styles/main.css";
 
 const Survey = props => {
+    const { id, memberId } = useParams();
     const [members, setMembers] = useState([]);
-    // 
-    // useEffect(() => {
-    //     retrieveEvaluations();
-    // }, []);
     
-    console.log(props.match.params.id);
-    // const retrieveEvaluations = () => {
-    //     EvaluationDataService.getAll()
-    //         .then(response => {
-    //             response.data.forEach( (member) => {
-    //                 setMembers(member.members);
-    //             });
-                
-    //             // setEvaluations(response.data);
-    //         })
-    //         .catch(e => {
-    //             console.log(e);
-    //         })
-    // }
-
+    useEffect(() => {
+        retrieveEvaluationsMembers();
+    }, []);
+    
+    const retrieveEvaluationsMembers = () => {
+        evaluationMember(id)
+            .then(response => {
+                const memberList = response.data.filter( members => members._id !== memberId)
+                setMembers(memberList);
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
+    
     return (
         <div id="pageSurvey" className="full-window">
             <div className="pageTitle">Request Evaluation</div>
@@ -54,44 +51,24 @@ const Survey = props => {
                                     <p className="small">Rank the members based on who you think has got your back.</p>
                                 </div>
 
-                                {members.map( (member) => {
-                                    return (
-                                        <div>{member._id}</div>
-                                    );
-                                })}
-
                                 <div className="card-body row justify-content-md-center">
                                     <div className="col-md-10">
-                                        <div className="input-group p-3">
-                                            <select className="form-select" id="ranking">
-                                                <option selected>Rank...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                            <label className="input-group-text justify-content-md-center" for="ranking">Anna Hower</label>
-                                        </div>
+                                        {members.map( (member) => {
+                                            return (
+                                                <div className="input-group p-3" key={member._id}>
+                                                    <select className="form-select" id="ranking">
+                                                        <option defaultValue>Rank...</option>
+                                                        {members.map( (m, index) => {
+                                                            return (
+                                                                <option key={index} value={index+1}>{index+1}</option>
+                                                            );
+                                                        })}
+                                                    </select>
+                                                    <label className="input-group-text justify-content-md-center" htmlFor="ranking">{member.memberName}</label>
+                                                </div>
+                                            );
+                                        })}
 
-                                        <div className="input-group p-3">
-                                            <select className="form-select" id="ranking">
-                                                <option selected>Rank...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                            <label className="input-group-text justify-content-md-center" for="ranking">Mark Watson</label>
-
-                                        </div>
-
-                                        <div className="input-group p-3">
-                                            <select className="form-select" id="ranking">
-                                                <option selected>Rank...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                            <label className="input-group-text justify-content-md-center" for="ranking">Alice Fowler</label>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,14 +80,16 @@ const Survey = props => {
                                     <div className="card-body row justify-content-md-center">
                                         <div className="col-md-10">
                                             <select className="form-select" aria-label="Default select example">
-                                                <option selected>Select Name</option>
-                                                <option value="1">Anna Hower</option>
-                                                <option value="2">Mark Watson</option>
-                                                <option value="3">Alice Fowler</option>
+                                                <option defaultValue>Name</option>
+                                                {members.map( (member) => {
+                                                    return (
+                                                        <option key={member._id}>{member.memberName}</option>
+                                                    );
+                                                })}
                                             </select>
                                             <div className="form-floating">
                                                 <textarea className="form-control" placeholder="Type Here..." id="reason"></textarea>
-                                                <label for="reason" className="px-0">Why?</label>
+                                                <label htmlFor="reason" className="px-0">Why?</label>
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +105,7 @@ const Survey = props => {
                                             <div className="col-md-10">
                                                 <div className="form-floating">
                                                     <textarea className="form-control" placeholder="Type Here..." id="selfReflection"></textarea>
-                                                    <label for="selfReflection" className="px-0">Self-Reflection</label>
+                                                    <label htmlFor="selfReflection" className="px-0">Self-Reflection</label>
                                                 </div>
                                             </div>
                                         </div>
