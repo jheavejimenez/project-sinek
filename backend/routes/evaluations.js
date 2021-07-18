@@ -39,7 +39,8 @@ router.route('/').get(async (req, res) => {
          pass: process.env.APP_PASSWORD,
        }
      });
-
+     const link = 'http://localhost:3000/evaluation-survey/'
+     console.log(newEvaluation._id);
      const listOfEmail = req.body.members;
 
      let recipients = [req.body.managementEmail,];
@@ -51,7 +52,7 @@ router.route('/').get(async (req, res) => {
          subject: 'Hello World',
          html:`<p><b>${req.body.teamName}</b> has invited you to evaluate your peers based on trust! Click below to view the evaluation form:</p>
                <br>
-               <p>Evaluation Form link (custom per team member)</p>
+              <a>Evaluation Form link ${link}</a>
                <br>
                <p>If you have any questions or concerns, feel free to reply to this email, and we'll be happy to discuss it with you!</p>
                <br>
