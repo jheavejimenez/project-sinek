@@ -28,7 +28,6 @@ router.route('/').get(async (req, res) => {
      
        await newMember.save();
        await newEvaluation.save();
-
      });
 
      const transporter = nodemailer.createTransport({
@@ -36,18 +35,35 @@ router.route('/').get(async (req, res) => {
        port: 587,
        secure: false,
        auth: {
-         user: 'jimenezjheave123@gmail.com',
-         pass: 'lpngvrsokqbcrttu',
+         user: process.env.APP_USERNAME,
+         pass: process.env.APP_PASSWORD,
        }
      });
 
-     let recipients = ['oninja258@gmail.com'];
+     const listOfEmail = req.body.members;
+
+     let recipients = [req.body.managementEmail,];
+     listOfEmail.forEach(i => {recipients.unshift(i.memberEmail)});
 
      recipients.forEach(function (to) {
        const mailOptions = {
          from: 'Sinek',
-         subject: 'testing2',
-         text: 'It works' 
+         subject: 'Hello World',
+         html:`<p><b>${req.body.teamName}</b> has invited you to evaluate your peers based on trust! Click below to view the evaluation form:</p>
+               <br>
+               <p>Evaluation Form link (custom per team member)</p>
+               <br>
+               <p>If you have any questions or concerns, feel free to reply to this email, and we'll be happy to discuss it with you!</p>
+               <br>
+               <br>
+               <p>
+                  Regards,<br>
+                  Clarke Benedict Plumo<br>
+                  Chief Vision Officer<br>
+                  Atmos Cloud Solutions, Inc.<br>
+                  +639258032895
+                </p>
+               `
 
        };
        mailOptions.to = to;
