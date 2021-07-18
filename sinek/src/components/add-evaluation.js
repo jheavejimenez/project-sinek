@@ -66,7 +66,7 @@ const AddEvaluation = props => {
     	  		<div class="card-body px-4 m-3">
     	  		  	<div class="mb-3">
     	  				<label for="managementEmail" class="form-label">Management Email: </label>
-    	  				<input type="email" class="form-control" id="managementEmail" placeholder="management@example.com" required />
+    	  				<input type="email" class="form-control" id="managementEmail" placeholder="management@example.com" name="managementEmail" required />
     	  		  	</div>
 
     	    		<div class="my-4">
@@ -78,7 +78,7 @@ const AddEvaluation = props => {
                 		<label for="teamName" class="form-label">Team Members: </label>
 						{inputList.map((x, i) => {
             			return (
-							<div className="box">
+							<div className="box">	
                 				<div class="input-group">
                 				  <input
 								  	type="text" 
