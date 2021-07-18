@@ -43,7 +43,7 @@ router.route('/').get(async (req, res) => {
      const listOfEmail = req.body.members;
 
      let recipients = [req.body.managementEmail,];
-     listOfEmail.forEach(i => {recipients.unshift(i.memberEmail)});
+     listOfEmail.forEach(i => {recipients.unshift(i.email)});
 
      recipients.forEach(function (to) {
        const mailOptions = {
