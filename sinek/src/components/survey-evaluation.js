@@ -64,7 +64,7 @@ const Survey = props => {
                                                             );
                                                         })}
                                                     </select>
-                                                    <label className="input-group-text justify-content-md-center" htmlFor="ranking">{member.memberName}</label>
+                                                    <label className="input-group-text justify-content-md-center" htmlFor="ranking">{member.name}</label>
                                                 </div>
                                             );
                                         })}
@@ -83,7 +83,7 @@ const Survey = props => {
                                                 <option defaultValue>Name</option>
                                                 {members.map( (member) => {
                                                     return (
-                                                        <option key={member._id}>{member.memberName}</option>
+                                                        <option key={member._id}>{member.name}</option>
                                                     );
                                                 })}
                                             </select>

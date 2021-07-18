@@ -16,7 +16,7 @@ router.route('/').get(async (req, res) => {
 }).post ((req, res) => {
    try {
      const newEvaluation = new Evaluation({
-       managementEmail: req.body.managementEmail,
+       email: req.body.email,
        teamName: req.body.teamName,
        members: []
      });
@@ -42,7 +42,7 @@ router.route('/').get(async (req, res) => {
 
      const listOfEmail = req.body.members;
 
-     let recipients = [req.body.managementEmail,];
+     let recipients = [req.body.email,];
      listOfEmail.forEach(i => {recipients.unshift(i.memberEmail)});
 
      recipients.forEach(function (to) {
