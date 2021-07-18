@@ -4,7 +4,7 @@ import "../styles/evaluation/add-evaluation.css";
 import "../styles/main.css";
 
 const AddEvaluation = props => {
-    const [inputList, setInputList] = useState([{ memberName: "", memberEmail: "" }]);
+    const [inputList, setInputList] = useState([{ name: "", email: "" }]);
     const [status, setStatus] = useState("Send Request");
 
     const handleSubmit = e => {
@@ -13,7 +13,7 @@ const AddEvaluation = props => {
         const { teamName, managementEmail } = e.target.elements;
         console.log(teamName.value);
         let data = {
-            managementEmail: managementEmail.value,
+            email: managementEmail.value,
             teamName: teamName.value,
             members: inputList
             // email: email.value,
@@ -50,7 +50,7 @@ const AddEvaluation = props => {
      
     // handle click event of the Add button
     const handleAddClick = () => {
-        setInputList([...inputList, { memberName: "", memberEmail: "" }]);
+        setInputList([...inputList, { name: "", email: "" }]);
     };
 
     return (
@@ -84,17 +84,17 @@ const AddEvaluation = props => {
 								  	type="text" 
 									class="form-control me-1"
 									placeholder="Name"
-								  	name="memberName"
-								  	value={x.memberName}
+								  	name="name"
+								  	value={x.name}
 								  	onChange={e => handleInputChange(e, i)}
 									/>
                 				  <input 
 								  	type="email" 
 									class="form-control ms-1" 
-									id="memberEmail"
+									id="email"
 									placeholder="name@email.com"
-								  	name="memberEmail"
-								  	value={x.memberEmail}
+								  	name="email"
+								  	value={x.email}
 								  	onChange={e => handleInputChange(e, i)}
 								  />
                 				</div>
