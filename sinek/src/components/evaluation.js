@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import EvaluationDataService from "../services/evaluation";
 import { Link } from "react-router-dom";
 
 const Evaluation = props => {

@@ -18,25 +18,23 @@ router.route('/').get(async (req, res) => {
        managementEmail: req.body.managementEmail,
        teamName: req.body.teamName,
        members: []
-
      });
-     
      const members = req.body.members;
-     
+
      members.forEach(async member => {
        const newMember = new Member(member);
        // Member.findOne({memberEmail: memberEmail.email}).then(function(result){
        //     return result !== null;
        // });
- 
+     
        newEvaluation.members.unshift({memberId: newMember._id});
      
        await newMember.save();
        await newEvaluation.save();
-       
-    });
+
+     });
      res.json(members);
-     
+    
    } catch(err) {
      res.status(400).json('Error: ' + err);
  
