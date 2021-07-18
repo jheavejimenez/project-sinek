@@ -6,5 +6,5 @@ export async function createEvaluation(evaluationData) {
         evaluationData
     }
 
-    return await axios.post(`${ApiConfig.url}/api/evaluation/add`, evaluationData);
+    return await axios.post(`${ApiConfig.url}/api/evaluation/`, evaluationData);
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import EvaluationDataService from "../services/evaluation";
+// import EvaluationDataService from "../services/evaluation";
 import { Link } from "react-router-dom";
 import "../styles/evaluation/survey-evaluation.css";
 import "../styles/main.css";
@@ -7,24 +7,24 @@ import "../styles/main.css";
 const Survey = props => {
     const [members, setMembers] = useState([]);
     // 
-    useEffect(() => {
-        retrieveEvaluations();
-    }, []);
+    // useEffect(() => {
+    //     retrieveEvaluations();
+    // }, []);
     
     console.log(props.match.params.id);
-    const retrieveEvaluations = () => {
-        EvaluationDataService.getAll()
-            .then(response => {
-                response.data.forEach( (member) => {
-                    setMembers(member.members);
-                });
+    // const retrieveEvaluations = () => {
+    //     EvaluationDataService.getAll()
+    //         .then(response => {
+    //             response.data.forEach( (member) => {
+    //                 setMembers(member.members);
+    //             });
                 
-                // setEvaluations(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            })
-    }
+    //             // setEvaluations(response.data);
+    //         })
+    //         .catch(e => {
+    //             console.log(e);
+    //         })
+    // }
 
     return (
         <div id="pageSurvey" className="full-window">
