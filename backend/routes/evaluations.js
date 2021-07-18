@@ -39,19 +39,35 @@ router.route('/').get(async (req, res) => {
          pass: process.env.APP_PASSWORD,
        }
      });
+     
+     //  console.log(newEvaluation._id);
+     //  const records = await Evaluation.findById(newEvaluation._id);
+     //  console.log(records);
+    //  const recipients = newEvaluation.members;
 
      const listOfEmail = req.body.members;
+     let recipientsList = [] 
 
-     let recipients = [req.body.email,];
-     listOfEmail.forEach(i => {recipients.unshift(i.memberEmail)});
-
-     recipients.forEach(function (to) {
+     listOfEmail.forEach(i => {
+      recipientsList.unshift(
+         {
+           email: i.email,
+           name: i.name,
+         }
+       )
+     });
+     
+     
+    recipientsList.forEach(function (to) {
        const mailOptions = {
          from: 'Sinek',
          subject: 'Hello World',
-         html:`<p><b>${req.body.teamName}</b> has invited you to evaluate your peers based on trust! Click below to view the evaluation form:</p>
+         html:`<p>Hi <b>${to.name}</b>,</p>
                <br>
-               <p>Evaluation Form link (custom per team member)</p>
+               <br>
+               <p><b>${req.body.teamName}</b> has invited you to evaluate your peers based on trust! Click below to view the evaluation form:</p>
+               <br>
+               <a href="">Evaluation Form link</a>
                <br>
                <p>If you have any questions or concerns, feel free to reply to this email, and we'll be happy to discuss it with you!</p>
                <br>
@@ -66,7 +82,8 @@ router.route('/').get(async (req, res) => {
                `
 
        };
-       mailOptions.to = to;
+       mailOptions.to = to.email;
+      //  mailOptions.to = to;
        
        transporter.sendMail(mailOptions, function(error, info){
          if (error) {
@@ -76,8 +93,8 @@ router.route('/').get(async (req, res) => {
          }
        });
      });
-     
      res.json(members);
+
     
    } catch(err) {
      res.status(400).json('Error: ' + err);
