@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const membersSchema = new Schema({
-    memberName: {type: String, required: true},
-    memberEmail: {type: String, required: true},
+    name: {type: String, required: true},
+    email: {type: String, required: true},
     evaluationForm: [{
         evaluationId: {type: mongoose.Types.ObjectId, ref: 'Evaluation'},
         answerId: {type: mongoose.Types.ObjectId, ref: 'Answer'},
