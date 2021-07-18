@@ -1,0 +1,40 @@
+#pageSummary {
+    h4 {
+
+    }
+
+    .trust-header {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 15px;
+
+        * {
+            font-weight: 700;
+        }
+    }
+
+    .summaryWrapperQ1 {
+        padding:0 15px 15px;
+    }
+
+    .trust-member {
+        .rank-wrapper {
+            max-width: 45px;
+            text-align: center;
+        }
+    }
+
+    .summaryQuestionContainer {
+        border-bottom: 1px solid #aaa;
+    }
+
+    #summaryQuestion2 {
+        h4 {
+            margin-bottom: 25px;
+        }
+    }
+
+    .questionTitle {
+        font-size:21px;
+        margin-bottom: 16px;
+    }
+}

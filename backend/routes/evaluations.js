@@ -16,7 +16,7 @@ router.route('/').get(async (req, res) => {
 }).post ((req, res) => {
    try {
      const newEvaluation = new Evaluation({
-       managementEmail: req.body.managementEmail,
+       email: req.body.email,
        teamName: req.body.teamName,
        members: []
      });
@@ -42,7 +42,7 @@ router.route('/').get(async (req, res) => {
 
      const listOfEmail = req.body.members;
 
-     let recipients = [req.body.managementEmail,];
+     let recipients = [req.body.email,];
      listOfEmail.forEach(i => {recipients.unshift(i.memberEmail)});
 
      recipients.forEach(function (to) {
@@ -111,6 +111,23 @@ router.route('/:id').put(async (req, res) => {
     res.status(400).json('Error: ' + err);
 
   }
+});
+
+// API for getting members in Evaluation
+router.route('/:id/members').get(async (req, res) => {
+
+  const evaluation = await Evaluation.findById(req.params.id);
+  const evalutationMembers = evaluation.members;
+  let memberList = [];
+
+  evalutationMembers.forEach(async member => {
+    memberList.push(member.memberId);
+  })
+
+  // List all members in evaluation
+  const records = await Member.find({ '_id': { $in: memberList } });
+
+  res.json(records);
 });
 
 module.exports = router;
