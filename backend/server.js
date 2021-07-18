@@ -21,8 +21,8 @@ connection.once('open', () => {
 const evaluationRouter = require('./routes/evaluations');
 const memberRouter = require('./routes/members');
 
-app.use('/evaluation', evaluationRouter);
-app.use('/member', memberRouter);
+app.use('/api/evaluation', evaluationRouter);
+app.use('/api/member', memberRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createEvaluation } from "../repository/AddEvaluation";
 import "../styles/evaluation/add-evaluation.css";
 import "../styles/main.css";
 
@@ -19,11 +20,13 @@ const AddEvaluation = props => {
             // message: message.value,
           };
 
+        // console.log(data);
         console.log(data);
-        EvaluationDataService.createEvaluation(data)
+        createEvaluation(data)
             .then(response => {
-                console.log(response.data)
-                // setEvaluations(response.data);
+                // console.log(response.data);
+				setStatus("Send Request");
+				alert('Form Sent');
             })
             .catch(e => {
                 console.log(e);
