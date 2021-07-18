@@ -13,6 +13,14 @@ body {
     background-size: cover;
 }
 
+.failed-gradient {
+    background-image: linear-gradient(to bottom left,#EA4825, #F8C357 );
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .blue {
     background-color: #2055f1;
     color: #ffffff;
@@ -21,6 +29,7 @@ body {
 .light-gray {
     background-color: #f8f8f8;
 }
+
 .dark {
     background-color: #403b31;
     color: #ffffff;
@@ -75,4 +84,11 @@ button.green:hover {
 .navi.active {
     color: #2055f1;
     border-bottom: 3px solid #2055f1;
+}
+
+.notice-page {
+    * {
+        color:#fff;
+        margin-bottom: 20px;
+    }
 }
