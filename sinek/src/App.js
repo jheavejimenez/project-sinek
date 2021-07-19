@@ -22,16 +22,6 @@ function App() {
           <Route path="/" component={AddEvaluation}/>
         </Switch>
       </div>
-      <ul>
-        <li>
-          <Link to={"/evaluation"}>Evaluation</Link>
-          <Link to={"/evaluation-add"}>Evaluation Add</Link>
-          <Link to={"/evaluation-survey"}>Evaluation Survey</Link>
-          <Link to={"/evaluation-summary"}>Evaluation Survey</Link>
-          <Link to={"/success"}>SuccessPage</Link>
-          <Link to={"/failed"}>SuccessPage</Link>
-        </li>
-      </ul>
     </div>
   );
 }
