@@ -14,12 +14,12 @@ function App() {
     <div>
       <div className="content-container">
         <Switch>
-          <Route path="/" component={AddEvaluation}/>
           <Route path="/evaluation" component={Evaluation}/>
           <Route path="/evaluation-survey/:id" component={SurveyEvaluation}/>
           <Route path="/evaluation-summary/:id" component={SummaryEvaluation}/>
           <Route path="/success" component={SuccessPage}/>
           <Route path="/failed" component={FailedPage}/>
+          <Route path="/" component={AddEvaluation}/>
         </Switch>
       </div>
       <ul>
