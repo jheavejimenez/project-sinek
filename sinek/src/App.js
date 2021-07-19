@@ -1,4 +1,5 @@
-import { Switch, Route, Link } from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
+import React from "react";
 import './App.css';
 
 import Evaluation from "./components/evaluation";
@@ -11,6 +12,16 @@ import FailedPage from "./components/failed-page";
 function App() {
   return (
     <div>
+      <div className="content-container">
+        <Switch>
+          <Route path="/evaluation" component={Evaluation}/>
+          <Route path="/evaluation-add" component={AddEvaluation}/>
+          <Route path="/evaluation-survey/:id" component={SurveyEvaluation}/>
+          <Route path="/evaluation-summary/:id" component={SummaryEvaluation}/>
+          <Route path="/success" component={SuccessPage}/>
+          <Route path="/failed" component={FailedPage}/>
+        </Switch>
+      </div>
       <ul>
         <li>
           <Link to={"/evaluation"}>Evaluation</Link>
@@ -21,17 +32,6 @@ function App() {
           <Link to={"/failed"}>SuccessPage</Link>
         </li>
       </ul>
-    
-      <div className="content-container">
-        <Switch>
-          <Route  path="/evaluation" component={Evaluation} />
-          <Route  path="/evaluation-add" component={AddEvaluation} />
-          <Route  path="/evaluation-survey/:id/:memberId" component={SurveyEvaluation} />
-          <Route  path="/evaluation-summary" component={SummaryEvaluation} />
-          <Route  path="/success" component={SuccessPage} />
-          <Route  path="/failed" component={FailedPage} />
-        </Switch>
-      </div>
     </div>
   );
 }

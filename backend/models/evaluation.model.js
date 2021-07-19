@@ -1,16 +1,30 @@
+const uuidv4 = require('uuid').v4;
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
 const evaluationSchema = new Schema({
-    email: { type: String, required: true },
-    teamName: {type: String, required: true},
-    evaluationLink: {type: String},
-    members: [{
-      memberId: {type: mongoose.Types.ObjectId, ref: 'Member'}
-    }]
+  managementEmail: {type: String, required: true},
+  managementName: {type: String, required: true},
+  teamName: {type: String, required: true},
+  members: [{
+    name: {type: String, required: true},
+    email: {type: String, required: true},
+    answer: [{
+      trusts: [{
+        memberId: {unique: true, type: String, required: true},
+        rank: {type: Number, required: true},
+        reason: {type: String},
+      }],
+      needsImprovement: {
+        memberId: {type: String, required: true},
+        reason: {type: String, required: true},
+      },
+      selfImprovement: {type: String, required: true},
+    }],
+  }],
 }, {
-    timesmaps: true,
+  timestamps: true,
 });
 
 const Evaluation = mongoose.model('Evaluation', evaluationSchema);

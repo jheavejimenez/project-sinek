@@ -11,7 +11,7 @@ const membersSchema = new Schema({
         answered: {type: Boolean}
     }]
 }, {
-    timesmaps: true,
+    timestamps: true,
 });
 
 const Members = mongoose.model('Members', membersSchema);
