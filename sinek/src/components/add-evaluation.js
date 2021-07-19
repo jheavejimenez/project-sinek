@@ -59,7 +59,7 @@ const AddEvaluation = props => {
 
   return (
     <PageEvaluationContainer>
-      <PageTitle>Request Evaluation</PageTitle>
+      <PageTitle>Create Evaluation Form</PageTitle>
       <TeamDetailsContainer>
         <TeamDetailsTitleContainer>
           <h3 className="m-1"><strong>TEAM DETAILS</strong></h3>

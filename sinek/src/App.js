@@ -14,8 +14,8 @@ function App() {
     <div>
       <div className="content-container">
         <Switch>
+          <Route path="/" component={AddEvaluation}/>
           <Route path="/evaluation" component={Evaluation}/>
-          <Route path="/evaluation-add" component={AddEvaluation}/>
           <Route path="/evaluation-survey/:id" component={SurveyEvaluation}/>
           <Route path="/evaluation-summary/:id" component={SummaryEvaluation}/>
           <Route path="/success" component={SuccessPage}/>
