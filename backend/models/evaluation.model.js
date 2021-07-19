@@ -12,7 +12,7 @@ const evaluationSchema = new Schema({
     email: {type: String, required: true},
     answer: [{
       trusts: [{
-        memberId: {unique: true, type: String, required: true},
+        memberId: {type: String, required: true},
         rank: {type: Number, required: true},
         reason: {type: String},
       }],
