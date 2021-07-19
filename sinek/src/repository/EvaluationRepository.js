@@ -10,25 +10,27 @@ export async function createEvaluationAnswer(memberId, answer) {
 }
 
 export async function deleteEvaluation(
-    id,
+  id,
+) {
+  return await axios.delete(`${ApiConfig.url}/api/evaluations/${id}`);
+}
 
-  ) {
-    return await axios.delete(`${ApiConfig.url}/api/evaluations/${id}`);
-  }
-  
-  export async function updateEvaluation(
-    id,
-    managementEmail,
-    teamName,
-    evaluationLink,
-    members
+export async function updateEvaluation(
+  id,
+  managementEmail,
+  teamName,
+  evaluationLink,
+  members
+) {
+  const data = {managementEmail, teamName, evaluationLink, members,}
+  console.log(data);
 
-  ) {
-    const data = {managementEmail, teamName, evaluationLink, members,}
-    console.log(data);
-  
-    return await axios.put(`${ApiConfig.url}/api/evaluations/${id}`, data);
-  }
+  return await axios.put(`${ApiConfig.url}/api/evaluations/${id}`, data);
+}
+
+export async function getEvaluation(id) {
+  return await axios.get(`${ApiConfig.url}/api/evaluations/${id}`);
+}
 
 export async function evaluationMember(id) {
   return await axios.get(`${ApiConfig.url}/api/members/${id}/evaluation`);

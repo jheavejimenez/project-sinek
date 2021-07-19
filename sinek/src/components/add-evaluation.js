@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {createEvaluation} from "../repository/EvaluationRepository";
+import {useHistory} from "react-router-dom";
 import "../styles/evaluation/add-evaluation.css";
 import "../styles/main.css";
 import styled from 'styled-components'
 
 const AddEvaluation = props => {
+  const history = useHistory();
   const [membersList, setMembersList] = useState([
     {name: "", email: ""},
     {name: "", email: ""},
@@ -30,7 +32,8 @@ const AddEvaluation = props => {
       .then(response => {
         // console.log(response.data);
         setStatus("Send Request");
-        alert('Form Sent');
+        alert('Successfully sent the evaluation form to your team mates!');
+        history.push(`/evaluation-summary/${response.data._id}`)
       })
       .catch(e => {
         console.log(e);
