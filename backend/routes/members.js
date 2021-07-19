@@ -31,6 +31,10 @@ router.route('/:id/evaluation').get(async (req, res) => {
     }
     evaluation._id = null;
     evaluation.members = evaluation.members.filter(member => !member._id.equals(memberId));
+    evaluation.members.forEach(member => {
+      member.answer = [];
+      member.email = null;
+    });
     res.json(evaluation);
   } catch (err) {
     res.status(400).json('Error: ' + err);

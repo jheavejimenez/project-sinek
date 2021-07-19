@@ -43,8 +43,21 @@ const Survey = props => {
       })
   }
 
+  const rankingsMap = {};
+  rankings.map(ranking => ranking.rank).forEach((ranking, index) => {
+    if (rankingsMap[ranking] === undefined) {
+      rankingsMap[ranking] = [];
+    }
+    rankingsMap[ranking].push(index);
+  });
+
+  const validRankings = !Object.values(rankingsMap).filter(ids => ids.length !== 1).length;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validRankings) {
+      return;
+    }
     const {needsImprovementMemberId, needsImprovementReason, selfImprovement} = e.target.elements;
     const trustsFields = [...e.target.elements].filter(field => field.id.startsWith("trusts"));
     const trustsRankFields = trustsFields.filter(field => field.id.startsWith("trustsRank"));
@@ -78,13 +91,8 @@ const Survey = props => {
     history.push("/success");
   }
 
-  const rankingsMap = {};
-  rankings.map(ranking => ranking.rank).forEach((ranking, index) => {
-    if (rankingsMap[ranking] === undefined) {
-      rankingsMap[ranking] = [];
-    }
-    rankingsMap[ranking].push(index);
-  });
+  console.log("Members", members.length);
+  console.log("Rankings", rankings.length);
 
   return (
     <div id="pageSurvey" className="full-window">
@@ -97,7 +105,7 @@ const Survey = props => {
             <nav className="navbar m-1 p-0 shadow">
               <ul className="nav justify-content-center text-center nav-fill col-sm-12">
                 <li className="nav-item">
-                  <a className="nav-link navi active" data-toggle="tab" href="#questionOne">Q1: TRUST</a>
+                  <a className="nav-link navi" data-toggle="tab" href="#questionOne">Q1: TRUST</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link navi" data-toggle="tab" href="#questionTwo">Q2: NEEDS IMPROVEMENT</a>
@@ -118,7 +126,7 @@ const Survey = props => {
                   <div className="card-body p-4">
                     <div className="card-body row justify-content-md-center">
                       <div className="col-md-10">
-                        {!!members.length && !!rankings.length && members.map((member, memberIndex) => {
+                        {!!(members.length) && !!(rankings.length) && members.map((member, memberIndex) => {
                           return (
                             <div key={member._id} style={{marginBottom: "8px"}}>
                               <div className="input-group">
@@ -127,7 +135,8 @@ const Survey = props => {
                                   id={`trustsRank[${member._id}]`}
                                   style={{
                                     borderColor: (
-                                      rankingsMap[rankings[memberIndex].rank]
+                                      rankings[memberIndex].rank
+                                      && rankingsMap[rankings[memberIndex].rank]
                                       && rankingsMap[rankings[memberIndex].rank].length > 1
                                     ) ? "red" : "black",
                                   }}

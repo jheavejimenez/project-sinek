@@ -99,7 +99,7 @@ const SummaryEvaluation = props => {
               <nav className="navbar p-0 shadow">
                 <ul className="nav justify-content-center text-center nav-fill col-sm-12">
                   <li className="nav-item">
-                    <a className="nav-link navi active" data-toggle="tab" href="#questionOne">Q1: TRUST</a>
+                    <a className="nav-link navi" data-toggle="tab" href="#questionOne">Q1: TRUST</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link navi" data-toggle="tab" href="#questionTwo">Q2: NEEDS IMPROVEMENT</a>
