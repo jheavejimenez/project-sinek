@@ -71,7 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Contributors
 
-Walter Santiago (Software Engineer) - w.santiago009@gmail.com
-Clarke Benedict Plumo (Software Engineer) - clarke.plumo@atmosclouds.com
-Robin Siton (Business Analyst) - rsiton5@gmail.com
-Vea Hufana (Quality Engineer) - veshvea@gmail.com
+- Walter Santiago (Software Engineer) - w.santiago009@gmail.com
+- Clarke Benedict Plumo (Software Engineer) - clarke.plumo@atmosclouds.com
+- Robin Siton (Business Analyst) - rsiton5@gmail.com
+- Vea Hufana (Quality Engineer) - veshvea@gmail.com
