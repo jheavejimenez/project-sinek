@@ -114,11 +114,27 @@ router.route('/').get(async (req, res) => {
 router.route('/:id').get(async (req, res) => {
   try {
     const evaluation = await Evaluation.findById(req.params.id);
+    if (!evaluation || evaluation.isDelete == true) {
+      res.status(404).json({'error': "Evaluation not found"});
+      return;
+    }
+    res.json(evaluation)
+  } catch (err) {
+    res.status(400).json('error')
+  }
+});
+
+router.route('/delete/:id').put(async (req, res) => {
+  try {
+    const {isDelete} = req.body;
+    const update = {isDelete};
+    const evaluation = await Evaluation.findByIdAndUpdate(req.params.id, update, {new: true});
     if (!evaluation) {
       res.status(404).json({'error': "Evaluation not found"});
       return;
     }
     res.json(evaluation)
+
   } catch (err) {
     res.status(400).json('error')
   }

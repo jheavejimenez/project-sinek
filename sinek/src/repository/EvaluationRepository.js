@@ -35,3 +35,12 @@ export async function getEvaluation(id) {
 export async function evaluationMember(id) {
   return await axios.get(`${ApiConfig.url}/api/members/${id}/evaluation`);
 }
+
+export async function softDeleteEvaluation(
+  id,
+  isDelete,
+) {
+  const data = {isDelete,}
+
+  return await axios.put(`${ApiConfig.url}/api/evaluations/delete/${id}`, data);
+}
