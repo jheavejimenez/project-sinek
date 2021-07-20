@@ -24,7 +24,13 @@ router.route('/:id/evaluation').get(async (req, res) => {
   try {
     const memberId = req.params.id;
     const evaluation = await Evaluation.findOne({"members._id": memberId})
+    console.log(evaluation)
     const member = evaluation.members.filter(member => member._id.equals(memberId))[0];
+    if (evaluation.isDelete === true) {
+      res.status(404).json({"error": "User has delete."});
+      return;
+
+    }
     if (member.answer.length) {
       res.status(404).json({"error": "User has already filled out the form."});
       return;

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "../styles/evaluation/summary-evaluation.css";
 import "../styles/main.css";
 import {useHistory, useParams} from "react-router-dom";
-import {getEvaluation} from "../repository/EvaluationRepository";
+import {getEvaluation, softDeleteEvaluation} from "../repository/EvaluationRepository";
 
 const SummaryEvaluation = props => {
   const {id} = useParams();
@@ -73,13 +73,26 @@ const SummaryEvaluation = props => {
   const refresh = async () => {
     const evaluation = await getEvaluation(id)
       .then(response => {
-        initialize(response.data);
+        // initialize(response.data);
+        response.data.isDelete ? history.push("/failed") : initialize(response.data);
       })
       .catch(e => {
         console.log(e);
         history.push("/failed");
       })
   }
+  const softDelete = async () => {
+    const evaluation = await softDeleteEvaluation(id, true)
+      .then(response => {
+        alert('Evaluation Deleted!')
+        history.push("/");
+      })
+      .catch(e => {
+        console.log(e);
+        history.push("/failed");
+      })
+  }
+
 
   useEffect(refresh, []);
 
@@ -224,14 +237,18 @@ const SummaryEvaluation = props => {
                     </div>
                   )}
                 </div>
-                <div style={{textAlign: "center"}}>
-                  Powered by Atmos Cloud Solutions, Inc.
+                <div className="row justify-content-md-center">
+                  <button className="btn btn-danger m-3" style={{textAlign: "center", maxWidth: "300px"}} onClick={() => softDelete()}>
+                    Cancel performance evaluation
+                  </button>
                 </div>
               </div>
             </div>
-
+            <div className="mt-3" style={{textAlign: "center"}}>
+              Powered by Atmos Cloud Solutions, Inc.
+            </div>
           </div>
-        </div>
+        </div>  
       </div>
 
     </div>

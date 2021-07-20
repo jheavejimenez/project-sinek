@@ -7,6 +7,7 @@ const evaluationSchema = new Schema({
   managementEmail: {type: String, required: true},
   managementName: {type: String, required: true},
   teamName: {type: String, required: true},
+  isDelete: {type: Boolean, default: false},
   members: [{
     name: {type: String, required: true},
     email: {type: String, required: true},
