@@ -45,15 +45,7 @@ Atmos Cloud Solutions, Inc.<br>
 </p>
 `
 
-router.route('/').get(async (req, res) => {
-  try {
-    const evaluations = await Evaluation.find();
-    res.json(evaluations)
-  } catch (err) {
-    res.status(400).json('error')
-
-  }
-}).post(async (req, res) => {
+router.route('/').post(async (req, res) => {
   try {
     const newEvaluation = new Evaluation({
       managementEmail: req.body.managementEmail,
